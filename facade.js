@@ -9,6 +9,16 @@ function getInstructors(callback){
   .done(callback);
 }
 
+function scheduleCourse(data, callback){
+  $.ajax({
+    url: baseUrl + 'schedulecourse/',
+    type: 'POST',
+    dataType: 'json',
+    data: data
+  })
+  .done(callback);
+}
+
 function print(data){
   console.log(data);
 }

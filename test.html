@@ -9,10 +9,24 @@
   </head>
   <body>
     <button onclick="getInstructors(print)">Get Instructors</button><br/>
-    <button>blarg</button><br/>
+    <button onclick="scheduleCourse(sampleCourse)">Schedule Course</button><br/>
 
     <div id="content">
 
     </div>
+    <script>
+    var sampleCourse = {
+        "end": "01:00 PM",
+        "section": 2,
+        "weekday": "Mon,Wed,Fri",
+        "start": "12:00 PM",
+        "subject": "SWEN",
+        "number": 344,
+        "instructor_id": 123456789,
+        "room_name" : "A142"
+    }
+    </script>
   </body>
+
+
 </html>
