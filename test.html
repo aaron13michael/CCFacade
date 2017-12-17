@@ -12,25 +12,35 @@
     <button onclick="scheduleCourse(sampleScheduledCourse)">Schedule Course</button><br/>
     <button onclick="getCourses(print)">Get Courses</button><br/>
     <button onclick="createCourse(sampleCourse)">Create Course</button><br/>
-    
+    <button onclick="checkAvailability(sampleTime, print)">Check Availability</button><br/>
+
     <div id="content">
 
     </div>
     <script>
     var sampleScheduledCourse = {
+        "start": "12:00 PM",
         "end": "01:00 PM",
         "section": 2,
         "weekday": "Mon,Wed,Fri",
-        "start": "12:00 PM",
         "subject": "SWEN",
         "number": 344,
         "instructor_id": 123456789,
-        "room_name" : "A142"
+        "room_name" : "A126",
+        "start_date": "01/22/2017",
+        "end_date": "05/16/2017"
     }
     var sampleCourse ={
       "subject": "CSCI",
       "number": 141,
       "title": "Intro to Computer Science"
+    }
+    var sampleTime = {
+      "building": "7B",
+	    "floor": 0,
+	    "time": "12:30 PM",
+	    "date": "01/25/2017",
+	    "day": "Wed"
     }
     </script>
   </body>

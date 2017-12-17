@@ -1,4 +1,4 @@
-var baseUrl = 'http://cal.se.rit.edu/api/v1.0/';
+var baseUrl = 'https://cal.se.rit.edu/api/v1.0/';
 
 function getInstructors(callback){
   return $.ajax({
@@ -31,6 +31,16 @@ function createCourse(data, callback){
 function scheduleCourse(data, callback){
   $.ajax({
     url: baseUrl + 'schedulecourse/',
+    type: 'POST',
+    dataType: 'json',
+    data: data
+  })
+  .done(callback);
+}
+
+function checkAvailability(data, callback){
+  return $.ajax({
+    url: baseUrl + 'checkfloor/',
     type: 'POST',
     dataType: 'json',
     data: data
