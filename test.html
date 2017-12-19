@@ -9,6 +9,7 @@
   </head>
   <body>
     <button onclick="getInstructors(print)">Get Instructors</button><br/>
+    <button onclick="createInstructor(sampleInstructor)">Create Instructor</button><br/>
     <button onclick="scheduleCourse(sampleScheduledCourse)">Schedule Course</button><br/>
     <button onclick="getCourses(print)">Get Courses</button><br/>
     <button onclick="createCourse(sampleCourse)">Create Course</button><br/>
@@ -18,6 +19,12 @@
 
     </div>
     <script>
+    var sampleInstructor = {
+      "rit_id" : 987654321,
+      "first_name" : "Professor",
+      "last_name" : "Elm",
+      "email" : "Professor.Elm@rit.edu"
+    }
     var sampleScheduledCourse = {
         "start": "12:00 PM",
         "end": "01:00 PM",
