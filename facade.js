@@ -10,17 +10,26 @@ function getInstructors(callback){
 }
 
 function createInstructor(data, callback){
+  var method = 'POST';
+  var csrftoken = Cookies.get('csrftoken');
+
   return $.ajax({
     url: baseUrl + 'instructors/',
-    type: 'POST',
+    type: method,
     dataType: 'json',
-    data: data
+    data: data,
+    beforeSend: function(xhr){
+      if (!this.crossDomain){
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    },
   })
+
   .done(callback);
 }
 
 function getCourses(callback){
-  return $.ajax({
+return $.ajax({
     url: baseUrl + 'courses/',
     type: 'GET',
     dataType: 'json',
@@ -29,31 +38,55 @@ function getCourses(callback){
 }
 
 function createCourse(data, callback){
+  var method = 'POST';
+  var csrftoken = Cookies.get('csrftoken');
+
   return $.ajax({
     url: baseUrl + 'courses/',
-    type: 'POST',
+    type: method,
     dataType: 'json',
-    data: data
+    data: data,
+    beforeSend: function(xhr){
+      if (!this.crossDomain){
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    },
   })
   .done(callback);
 }
 
 function scheduleCourse(data, callback){
+  var method = 'POST';
+  var csrftoken = Cookies.get('csrftoken');
+
   $.ajax({
     url: baseUrl + 'schedulecourse/',
-    type: 'POST',
+    type: method,
     dataType: 'json',
-    data: data
+    data: data,
+    beforeSend: function(xhr){
+      if (!this.crossDomain){
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    },
   })
   .done(callback);
 }
 
 function checkAvailability(data, callback){
+  var method = 'POST';
+  var csrftoken = Cookies.get('csrftoken');
+
   return $.ajax({
     url: baseUrl + 'checkfloor/',
-    type: 'POST',
+    type: method,
     dataType: 'json',
-    data: data
+    data: data,
+    beforeSend: function(xhr){
+      if (!this.crossDomain){
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    },
   })
   .done(callback);
 }
