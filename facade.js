@@ -1,4 +1,4 @@
-var baseUrl = 'https://cal.se.rit.edu/api/v1.0/';
+var baseUrl = 'https://cal.se.rit.edu/api/dev/';
 
 function getInstructors(callback){
   return $.ajax({
