@@ -17,6 +17,49 @@ export const getInstructors = () =>{
   return result;
 }
 
+export const getRooms = () =>{
+  var result = [];
+  $.ajax({
+    url: baseUrl + 'rooms/',
+    type: 'GET',
+    async: false,
+    dataType: 'json',
+    success:function(data){
+      result = data;
+    }
+  })
+  return result;
+}
+
+export const getRoomsScheduledCourses = (data) =>{
+  var result = [];
+  $.ajax({
+    url: baseUrl + 'scheduledcourses/' + data + '/',
+    type: 'GET',
+    async: false,
+    dataType: 'json',
+    success:function(data){
+      result = data;
+    }
+  })
+  return result;
+}
+
+export const getInstructorsScheduledCourses = (data) => {
+  var result = [];
+  var arrayOfString = data.split(' ');
+  $.ajax({
+    url: baseUrl + 'scheduledcourses/' + arrayOfString[1] + '/' + arrayOfString[0] + '/',
+    type: 'GET',
+    async: false,
+    dataType: 'json',
+    success:function(data){
+      result = data;
+    }
+  })
+  return result;
+}
+
 export const getCourses = () =>{
   var result = [];
   $.ajax({
