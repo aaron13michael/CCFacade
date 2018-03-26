@@ -1,7 +1,7 @@
 import $ from 'jquery'; 
 import Cookies from "js-cookie";
 
-var baseUrl = 'http://cal.se.rit.edu/api/dev/';
+var baseUrl = 'https://cal.se.rit.edu/api/dev/';
 
 export const getInstructors = () =>{
   var result = [];
@@ -156,4 +156,19 @@ function colorRooms (data){
       $("#"+roomsToCheck[i]).attr("fill", "red");
     }
   }
+}
+
+
+export const createExcel = () =>{
+  var result = [];
+  $.ajax({
+    url: baseUrl + 'excel/',
+    type: 'GET',
+    async: false,
+    dataType: 'json',
+    success:function(data){
+      result = data;
+    }
+  })
+  return result;
 }
