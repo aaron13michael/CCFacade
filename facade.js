@@ -1,7 +1,7 @@
 import $ from 'jquery'; 
 import Cookies from "js-cookie";
 
-var baseUrl = 'https://cal.se.rit.edu/api/dev/';
+var baseUrl = 'http://cal.se.rit.edu/api/dev/';
 
 export const getInstructors = () =>{
   var result = [];
