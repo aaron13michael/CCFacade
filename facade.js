@@ -1,4 +1,4 @@
-import $ from 'jquery'; 
+import $ from 'jquery';
 import Cookies from "js-cookie";
 
 var baseUrl = 'http://cal.se.rit.edu/api/dev/';
@@ -116,9 +116,47 @@ function scheduleSuccess(data){
   window.location.replace("/Confirmation");
 }
 
+export const editScheduledCourse = (subject, number, section, data, callback)=>{
+  var method = 'PATCH';
+  var csrftoken = Cookies.get('csrftoken');
+
+  return $.ajax({
+    url: baseUrl + 'scheduledcourses/detail/'+subject+'/'+number+'/'+section+'/',
+    type: method,
+    dataType: 'json',
+    data: data,
+    beforeSend: function(xhr){
+      if (!this.crossDomain){
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    },
+    error: basicErrorFunction,
+    success: callback
+  })
+}
+
+export const deleteScheduledCourse = (subject, number, section, callback)=>{
+  var method = 'PATCH';
+  var csrftoken = Cookies.get('csrftoken');
+
+  return $.ajax({
+    url: baseUrl + 'scheduledcourses/detail/'+subject+'/'+number+'/'+section+'/',
+    type: method,
+    dataType: 'json',
+    data: data,
+    beforeSend: function(xhr){
+      if (!this.crossDomain){
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    },
+    error: basicErrorFunction,
+    success: callback
+  })
+}
+
 
 function basicErrorFunction(xhr, status, error){
-  alert("An arror occured: " + xhr.responseText);
+  alert("An error occured: " + xhr.responseText);
 }
 
 export const checkAvailability = (data, callback)=>{
