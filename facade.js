@@ -195,3 +195,18 @@ function colorRooms (data){
     }
   }
 }
+
+
+export const createExcel = () =>{
+  var result = [];
+  $.ajax({
+    url: baseUrl + 'excel/',
+    type: 'GET',
+    async: false,
+    dataType: 'json',
+    success:function(data){
+      result = data;
+    }
+  })
+  return result;
+}
