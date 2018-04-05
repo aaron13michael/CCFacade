@@ -17,6 +17,25 @@ export const getInstructors = () =>{
   return result;
 }
 
+export const createInstructor = (data, callback) =>{
+  var method = 'POST';
+  var csrftoken = Cookies.get('csrftoken');
+
+  return $.ajax({
+    url: baseUrl + 'instructors/',
+    type: method,
+    dataType: 'json',
+    data: data,
+    beforeSend: function(xhr){
+      if (!this.crossDomain){
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    },
+    error: basicErrorFunction,
+    success: callback,
+  })
+}
+
 export const getRooms = () =>{
   var result = [];
   $.ajax({
