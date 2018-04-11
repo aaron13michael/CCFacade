@@ -155,14 +155,13 @@ export const editScheduledCourse = (subject, number, section, data, callback)=>{
 }
 
 export const deleteScheduledCourse = (subject, number, section, callback)=>{
-  var method = 'PATCH';
+  var method = 'DELETE';
   var csrftoken = Cookies.get('csrftoken');
 
   return $.ajax({
     url: baseUrl + 'scheduledcourses/detail/'+subject+'/'+number+'/'+section+'/',
     type: method,
     dataType: 'json',
-    data: data,
     beforeSend: function(xhr){
       if (!this.crossDomain){
         xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -215,7 +214,6 @@ function colorRooms (data){
   }
 }
 
-
 export const createExcel = () =>{
   var result = [];
   $.ajax({
@@ -226,6 +224,48 @@ export const createExcel = () =>{
     success:function(data){
       result = data;
     }
+  })
+  return result;
+}
+
+export const checkCourseScheduled = (subject, number, data)=>{
+  var method = 'POST';
+  var csrftoken = Cookies.get('csrftoken');
+  var result = [];
+
+  return $.ajax({
+    url: baseUrl + 'courses/is-scheduled/'+subject+'/'+number+'/',
+    type: method,
+    dataType: 'json',
+    async: false,
+    data: data,
+    beforeSend: function(xhr){
+      if (!this.crossDomain){
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    },
+    error: basicErrorFunction,
+    success: function(data){
+      result = data;
+    }
+  })
+  return result
+}
+
+export const getCourseSections = (subject, number)=>{
+  var method = 'GET';
+  var csrftoken = Cookies.get('csrftoken');
+  var result = [];
+
+  return $.ajax({
+    url: baseUrl + 'courses/is-scheduled/'+subject+'/'+number+'/',
+    type: method,
+    dataType: 'json',
+    async: false
+    success:function(data){
+      result = data;
+    },
+    error: basicErrorFunction,
   })
   return result;
 }
