@@ -50,10 +50,17 @@ export const getRooms = () =>{
   return result;
 }
 
-export const getRoomsScheduledCourses = (data) =>{
+export const getRoomsScheduledCourses = (room, date="", time="") =>{
   var result = [];
+  var url = baseUrl + 'scheduledcourses/' + room + '?';
+  if(date !== ""){
+    url += "startdate=" + date;
+  }
+  if(time !== ""){
+    url += "&starttime=" + time;
+  }
   $.ajax({
-    url: baseUrl + 'scheduledcourses/' + data + '/',
+    url: url,
     type: 'GET',
     async: false,
     dataType: 'json',
